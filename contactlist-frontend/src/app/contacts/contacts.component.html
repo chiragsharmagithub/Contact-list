@@ -1,0 +1,89 @@
+<div class="container">
+  <h3>Contact List:</h3>
+  <div class="row"></div>
+  <button
+    class="btn btn-primary"
+    (click)="showAddContactForm = !showAddContactForm">
+    	Add Contact
+  </button>
+
+  <div 
+  	*ngIf="showAddContactForm" 
+	style="margin-top: 20px; margin-bottom: 20px;" 
+	class="shadow p-3 mb-5 bg-white rounded">
+
+    <form (submit)="onAddContact()">
+      <div class="form-group">
+        <label>First name: </label>
+        <input
+          type="text"
+          [(ngModel)]="first_name"
+          name="first_name"
+          class="form-control"
+		  required
+        />
+      </div>
+	  <br>
+      <div class="form-group">
+        <label>Last name: </label>
+        <input
+          type="text"
+          [(ngModel)]="last_name"
+          name="last_name"
+          class="form-control"
+        />
+      </div>
+	  <br>
+      <div class="form-group">
+        <label>Phone number: </label>
+        <input
+          type="text"
+          [(ngModel)]="phone_number"
+          name="phone_number"
+          class="form-control"
+		  required
+        />
+      </div>
+	  <br>
+	  <div class="text-center">
+		<button 
+			style="text-align: center;" 
+			class="btn btn-success" 
+			type="submit">
+				Add contact
+		</button>
+		&nbsp;
+		<button type="button" class="btn btn-info" (click)="onRestForm()" style="color: white">
+			Clear
+		</button>
+	  </div>
+      
+    </form>
+  </div>
+  <hr>
+  <br />
+  <div class="row">
+    <div *ngFor="let contact of contactList">
+		<div class="row">
+			<div class="col-sm">
+				{{ contact.first_name }}
+			</div>
+			<div class="col-sm">
+				{{ contact.last_name }}
+			</div>
+			<div class="col-sm">
+				{{ contact.phone_number }}
+			</div>
+			<div class="col-sm">
+				<input
+					type="button"
+					(click)="onDeleteContact(contact._id)"
+					value="Delete"
+					class="btn btn-danger"
+        		/>
+			</div>
+		</div>
+		<br>
+    </div>
+  </div>
+</div>
