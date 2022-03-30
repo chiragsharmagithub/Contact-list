@@ -26,7 +26,6 @@ mongoose.connection.on('error', (err) => {
     }
 });
 
-
 //testing server
 app.get('/', (req, res) => {
     res.send('Welcome to the Homepage of Contacts List app');
@@ -42,8 +41,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.use('/api', route);
-
-
 
 // We have to bind the server with this port
 app.listen(port, ()=>{
